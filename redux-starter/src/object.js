@@ -1,5 +1,20 @@
-const person = { name : "John" };
+const person = { 
+    name : "John",
+    address: {
+        country: "USA",
+        city: "SFO"
+    }
+};
 
-const updated = Object.assign({}, person, { name: "Bob", age: 30 }) // copies into empty object
+// const updated = {...person, name: "Bob"}; // shallow copy
 
-console.log(updated);
+const updated = {   //deep copy
+    ...person, 
+    address: {
+        ...person.address,
+        city: "NY"
+    },
+    name: "Bob"
+}; // shallow copy
+
+console.log(person);
