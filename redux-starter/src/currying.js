@@ -1,3 +1,4 @@
+// how do we change two parameters, so we end up with one?
 function add(a) {
     return function(b) {
         return a + b;
