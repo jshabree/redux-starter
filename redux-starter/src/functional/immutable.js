@@ -2,12 +2,12 @@ let map = require("immutable");
 const _ = require("immutable")
 
 
-let book = map.Map({ title: "Little Women "});
+let book = map.Map({ title: "Little Women"});
 
-// function publish(book) {
-//     book.isPublished= true;     // immutable
-// }
+function publish(book) {
+    return book.set("isPublished", true);    
+}
 
-// publish(book);
+book = publish(book);
 
-console.log(book.get("title"));
+console.log(book.toJS());
