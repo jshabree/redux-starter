@@ -5,4 +5,6 @@ function add(a) {
     };
 }
 
-console.log(add(1)(5));  // add(1,5)
+const addTwo = a => b => a + b; // (a , b) => a + b
+console.log(add(1)(5));  // add(1 , 5)
+console.log(addTwo(1)(5));
