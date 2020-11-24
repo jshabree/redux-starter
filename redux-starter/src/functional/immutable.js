@@ -1,8 +1,13 @@
-let book = { title: "Little Women "};
+let map = require("immutable");
+const _ = require("immutable")
 
-function publish(book) {
-    book.isPublished= true;     // immutable
-}
 
-publish(book);
-console.log(book);
+let book = map.Map({ title: "Little Women "});
+
+// function publish(book) {
+//     book.isPublished= true;     // immutable
+// }
+
+// publish(book);
+
+console.log(book.title); // undefined
