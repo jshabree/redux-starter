@@ -1,7 +1,6 @@
-let reducer = require("./reducer");
-const _ = require("./reducer")
+import { createStore } from "redux";
+import reducer from './reducer';
 
+const store = createStore(reducer);
 
-let createStore = require("redux");
-
-const store = createStore.createStore(reducer.reducer)
+export default store;

@@ -1,3 +1,3 @@
-let store = require("./store");
+import store from './store';
 
-console.log(store.store)
+console.log(store);
