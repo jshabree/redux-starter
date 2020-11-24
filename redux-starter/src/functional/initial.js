@@ -1,8 +1,4 @@
-// import { pipe } from "lodash/fp"
-
 let fp= require('lodash/fp');
-
-// import _ from 'lodash';
 
 const _ = require("lodash")
 
