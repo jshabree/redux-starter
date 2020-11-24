@@ -13,7 +13,7 @@ const trim = str => str.trim();
 const wrap = type  => str =>  ('<' + type +  '>'+ str + '</' + type + '>')
 const toLowerCase = str => str.toLowerCase();
 
-const transform = fp.pipe(trim, toLowerCase, wrap("span"));
+const transform = fp.pipe(trim, toLowerCase, wrap("div"));
 
 console.log(transform(input));
 
