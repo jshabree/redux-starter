@@ -10,4 +10,4 @@ let book = map.Map({ title: "Little Women "});
 
 // publish(book);
 
-console.log(book.title); // undefined
+console.log(book.get("title"));
