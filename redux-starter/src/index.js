@@ -10,9 +10,10 @@ let input = "  JavaScript  ";
 let output = "<div>" + input.trim() + "</div>";
 
 const trim = str => str.trim();
-const wrap = (type, str) => '<${type}>${str}</${type}>';
+const wrap = type  => str =>  ('<' + type +  '>'+ str + '</' + type + '>')
 const toLowerCase = str => str.toLowerCase();
 
-const transform= fp.pipe(trim, toLowerCase, wrap("div"));
+const transform = fp.pipe(trim, toLowerCase, wrap("span"));
 
 console.log(transform(input));
+
