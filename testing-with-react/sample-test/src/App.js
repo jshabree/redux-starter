@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Greeting from './components/header/greeting';
+import LoginControl from './components/header/loginControl';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <Greeting isLoggedIn = {true} />
+      <LoginControl />
 
         
       </div>
