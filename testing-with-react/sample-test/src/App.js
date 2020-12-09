@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import EmptyLink from './components/header/emptyLink'
-
+import Greeting from './components/header/greeting';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <EmptyLink />
+      <Greeting isLoggedIn = {true} />
 
         
       </div>
