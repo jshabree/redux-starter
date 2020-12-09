@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
-import Clock from './components/header/clock'
+import EmptyLink from './components/header/emptyLink'
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Clock />
-        <Clock />
-        <Clock />
+      <EmptyLink />
 
         
       </div>
