@@ -45,7 +45,7 @@ function LoginButton(props) {
     );
   }
   
-  function LogoutButton(props) {
+function LogoutButton(props) {
     return (
       <button onClick={props.onClick}>
         Logout
