@@ -1,22 +1,6 @@
 import React from 'react';
 import Greeting from './greeting';
 
-function LoginButton(props) {
-    return (
-      <button onClick={props.onClick}>
-        Login
-      </button>
-    );
-  }
-  
-  function LogoutButton(props) {
-    return (
-      <button onClick={props.onClick}>
-        Logout
-      </button>
-    );
-  }
-
 class LoginControl extends React.Component {
     constructor(props) {
       super(props);
@@ -53,4 +37,20 @@ class LoginControl extends React.Component {
     }
 }
 
+function LoginButton(props) {
+    return (
+      <button onClick={props.onClick}>
+        Login
+      </button>
+    );
+  }
+  
+  function LogoutButton(props) {
+    return (
+      <button onClick={props.onClick}>
+        Logout
+      </button>
+    );
+  }
+  
 export default LoginControl;
