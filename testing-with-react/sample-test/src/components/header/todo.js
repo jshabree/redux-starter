@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class ToDo extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class ToDo extends React.Component {
           />
           
           <button>
-            Add #{this.state.items.length + 1}
+           Add #{this.state.items.length + 1}
           </button>
 
         </form> 
@@ -38,7 +38,7 @@ class ToDo extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if(this.state.items.length === 0) {
+    if(this.state.text.length === 0) {
       return;
   }
 

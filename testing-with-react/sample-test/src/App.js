@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ToDo from './components/header/test'
+import ToDo from './components/header/todo'
 
 
 class App extends Component {
