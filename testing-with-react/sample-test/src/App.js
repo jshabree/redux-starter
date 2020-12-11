@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import LoginControl from './components/header/loginControl';
+import LoginUser from './components/loginUser';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <LoginControl />
+      
+      <LoginUser />
 
         
       </div>
