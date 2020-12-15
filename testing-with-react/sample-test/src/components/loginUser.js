@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../App.css'
+import '../app.css'
 
 class loginUser extends Component {
     constructor(props){
@@ -41,55 +41,51 @@ class loginUser extends Component {
     render() {
         return (
             <div>
-
                 <form className = "login" onChange = {this.handleOnSubmit}>
 
+                <span>
                 <label htmlFor = "username" > Username </label>
                     <input name = "username" type = "text" id = "username" value = {this.state.username} />
-
+                </span>
+                
+                <span>
                 <label htmlFor = "password" > Password </label>
                     <input name = "password" type = "password" id = "password" value = {this.state.password} />
 
-                
-                <button type = "submit" onClick = {this.handleOnSubmit}>
-                    Submit
-                </button>
+                </span>
+            
 
-                               
-                <table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>userId</th>
-                        <th>title</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    { (this.state.info.length > 0) ? this.state.info.map((item, index) => {
-                            return (
-                                <tr key = {index}>
-                                    <td> {item.id} </td>
-                                    <td> {item.userId}</td>
-                                    <td> {item.title} </td>
+                        <table className = "table">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>userId</th>
+                                    <th>title</th>
                                 </tr>
-                            )
-                    }) : <tr> Not enough data to be fetched  </tr> }
+                            </thead>
 
+                            <tbody>
+                                { (this.state.info.length > 0) ? this.state.info.map((item, index) => {
+                                    return (
+                                        <tr key = {index}>
+                                            <td> {item.id} </td>
+                                            <td> {item.userId}</td>
+                                            <td> {item.title} </td>
+                                        </tr>
+                                    )
+                                }) : <tr><td>Not enough data to be fetched  </td></tr> }
 
-                                       
-                </tbody>
-                                
-                </table>
-                            
-                        
-                <button type = "clear" onClick = {this.handleOnClick}>
-                    Clear
-                </button>
+                            </tbody>                                
+                        </table>
+                
+                <button type = "submit" onClick = {this.handleOnSubmit}> Submit </button>
 
+                <button type = "clear" onClick = {this.handleOnClick}> Clear </button>
+
+                
                 </form>
                 
-            </div>
+            </div>  
         )
     }
 
