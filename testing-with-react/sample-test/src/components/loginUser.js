@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
+
 import '../app.css'
 
 class loginUser extends Component {
@@ -39,23 +42,42 @@ class loginUser extends Component {
 
     
     render() {
+        
         return (
-            <div>
-                <form className = "login" onChange = {this.handleOnSubmit}>
+            <div className = "outer-class"> 
 
-                <span>
-                <label htmlFor = "username" > Username </label>
-                    <input name = "username" type = "text" id = "username" value = {this.state.username} />
-                </span>
+                <div className = "login">
+                    <Form onSubmit = {this.handleOnSubmit}>
+                        <Form.Group controlId = "username">
+                        <Form.Label> Username </Form.Label>
+                        <Form.Control
+                            autoFocus
+                            type = "username"
+                            value = {this.state.username}
+                        />
+                        </Form.Group>
+
+                        <Form.Group controlId = "password">
+                        <Form.Label> Password </Form.Label>
+                        <Form.Control
+                            autoFocus
+                            type = "password"
+                            value = {this.state.password}
+                        />
+                        </Form.Group>
+                    </Form>
                 
-                <span>
-                <label htmlFor = "password" > Password </label>
-                    <input name = "password" type = "password" id = "password" value = {this.state.password} />
 
-                </span>
-            
+                    <Button block size = "sm" type = "submit" onClick = {this.handleOnSubmit}> Submit </Button>
 
-                        <table className = "table">
+                    <Button block size = "sm" type = "clear" onClick = {this.handleOnClick}> Clear </Button>
+
+                </div> 
+
+                <div className = "table">
+                    {this.state.info.length > 0 ? 
+                
+                        <table>
                             <thead>
                                 <tr>
                                     <th>id</th>
@@ -66,26 +88,23 @@ class loginUser extends Component {
 
                             <tbody>
                                 { (this.state.info.length > 0) ? this.state.info.map((item, index) => {
-                                    return (
+                                return (
                                         <tr key = {index}>
                                             <td> {item.id} </td>
                                             <td> {item.userId}</td>
                                             <td> {item.title} </td>
                                         </tr>
                                     )
-                                }) : <tr><td>Not enough data to be fetched  </td></tr> }
+                                }) : null }
 
-                            </tbody>                                
+                            </tbody>   
+
                         </table>
-                
-                <button type = "submit" onClick = {this.handleOnSubmit}> Submit </button>
 
-                <button type = "clear" onClick = {this.handleOnClick}> Clear </button>
-
-                
-                </form>
-                
-            </div>  
+                    :  console.log('Not enough data to be fetched') }
+                </div>
+            
+            </div>
         )
     }
 
