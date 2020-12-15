@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../App.css'
 
 class loginUser extends Component {
     constructor(props){
@@ -54,39 +55,34 @@ class loginUser extends Component {
                     Submit
                 </button>
 
-                <div>
+                               
+                <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>userId</th>
+                        <th>title</th>
+                    </tr>
+                </thead>
+
+                <tbody>
                     { (this.state.info.length > 0) ? this.state.info.map((item, index) => {
-                   
-                       return(
-                           <div key={index} style = {{borderBottom:"1px solid black"}}>
-                                <table>
-                            
-                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>userId</th>
-                                            <th>title</th>
-                                        </tr>
-                                    </thead>
+                            return (
+                                <tr key = {index}>
+                                    <td> {item.id} </td>
+                                    <td> {item.userId}</td>
+                                    <td> {item.title} </td>
+                                </tr>
+                            )
+                    }) : <tr> Not enough data to be fetched  </tr> }
 
-                                    <tbody>
-                                        <tr>
-                                            <td> {item.id} </td>
-                                            <td> {item.userId}</td>
-                                            <td> {item.title} </td>
-                                        </tr>
-                                    </tbody>
+
+                                       
+                </tbody>
                                 
-                                </table>
-                            </div>
-                        )
-                   }) : <tr> Not enough data to be fetched  </tr> }
-                    
-                
-                </div>
-                
-
-            
+                </table>
+                            
+                        
                 <button type = "clear" onClick = {this.handleOnClick}>
                     Clear
                 </button>
