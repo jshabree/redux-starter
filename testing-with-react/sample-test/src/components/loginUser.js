@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import { connect } from "react-redux";
-import  getData  from "../redux/actions/index";
+import { getData }  from "../redux/actions/index";
 
 import '../app.css'
 
@@ -23,28 +23,17 @@ class loginUser extends Component {
         handleOnSubmit = (e) => {
             e.preventDefault();
             this.setState({[e.target.name]: e.target.value});
-            try{
-                fetch("https://jsonplaceholder.typicode.com/todos/", {
-                    method: "GET",
-                    headers: {"Content-type": "application/json"}
-                }).then(response => response.json())
-                .then(data=> this.setState({info: data}))
-            }
-            
-            catch {
-                console.log("error")
 
-            }
-
+            this.props.dispatch(getData()) // action 
         }
     
         handleOnClick = (e) => {
             // this.setState([e.target.value] = e.target.value);
         }
-
-        componentDidUpdate(newProps, prevState) {
-            if(newProps.result !== prevState.info) {
-                this.setState({info: newProps.result})
+        
+        static getDerivedStateFromProps(props, state){
+            if(props.result !== state.info) {
+                return ({info: props.result})
             }
         }
 
@@ -120,7 +109,7 @@ class loginUser extends Component {
 
 const mapStateToProps = state => {
     return {
-        result: state.getData.info
+        result: state.posts.info // getData from reducer
     };
 };
 export default connect(mapStateToProps)(loginUser);
