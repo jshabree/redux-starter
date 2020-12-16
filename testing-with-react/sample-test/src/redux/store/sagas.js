@@ -12,7 +12,7 @@ import {
 
 function* fetchData(action) {
     try {
-        const baseUrl = "https://jsonplaceholder.typicode.com/todos";
+        const baseUrl = "https://jsonplaceholder.typicode.com/todos/";
         console.log("Action at sagas =>", JSON.stringify(action));
         const requestMethod = "";
         const response = yield call(getDataFromServer, baseUrl, requestMethod, "");
