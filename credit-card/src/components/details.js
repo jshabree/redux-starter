@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 class details extends Component {
     render() {
         return (
-            <div className = "form">
+            <div className = "center_div">
             <form className = "details">
 
-            <div className = "form">
+            <div className = "form-inline">
                 <input id = "ccn" type = "tel" inputMode = "numeric" maxlength = "10" class = "form-control" placeholder = "Enter your card number"/>
             </div>
 
@@ -20,7 +20,7 @@ class details extends Component {
                 </div>
 
                 <div class = "col">
-                    <input id = "cvv" class = "form-control" placeholder = "Enter your CVV"/>
+                    <input id = "cvv" type = "password" class = "form-control" placeholder = "Enter your CVV"/>
                 </div>
 
                 
@@ -38,7 +38,10 @@ class details extends Component {
                 
             </div>
 
+            <div class = "primary-button">
                 <button type = "submit"  class = "btn btn-primary" > Place your order</button>
+            </div>
+
                
             </form>
 
