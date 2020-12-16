@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import { connect } from "react-redux";
+import { getData } from "../redux/actions/index";
 
 import '../app.css'
 
@@ -110,5 +111,11 @@ class loginUser extends Component {
     }
 
 }
+
+const mapStateToProps = state => {
+    return {
+        result: state.getData.info
+    };
+};
 
 export default connect(mapStateToProps)(loginUser);
