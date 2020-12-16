@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
+import { connect } from "react-redux";
 
 import '../app.css'
 
@@ -110,4 +111,4 @@ class loginUser extends Component {
 
 }
 
-export default loginUser;
+export default connect(mapStateToProps)(loginUser);
