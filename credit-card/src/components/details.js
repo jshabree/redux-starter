@@ -6,35 +6,36 @@ class details extends Component {
             <div className = "form">
             <form className = "details">
 
-            <div className = "form-inline">
-
-                <label for = "ccn"> Card Number </label>
+            <div className = "form">
                 <input id = "ccn" type = "tel" inputMode = "numeric" maxlength = "10" class = "form-control" placeholder = "Enter your card number"/>
-
             </div>
 
-            <div className = "form-inline">
+            <div className = "row">
+                <div class = "col">
+                    <input id = "month" class = "form-control" placeholder = "Month"/>
+                </div>
 
-                <label for = "month"> MM </label>
-                <input id = "month" class = "form-control" placeholder = "Month"/>
-           
-                <label for = "year"> YY </label>
-                <input id = "year" class = "form-control" placeholder = "Year"/>
-            
+                <div class = "col">
+                    <input id = "year" class = "form-control" placeholder = "Year"/>
+                </div>
 
-                <label for = "cvv"> CVV </label>
-                <input id = "cvv" class = "form-control" placeholder = "Enter your CVV"/>
+                <div class = "col">
+                    <input id = "cvv" class = "form-control" placeholder = "Enter your CVV"/>
+                </div>
 
+                
             </div>
 
             
-            <div className = "form-inline">
-                <label for = "firstName"> First Name </label>
-                <input id = "firstName" type = "text" class = "form-control" placeholder = "Enter your first name"/>
+            <div className = "row">
+                <div class = "col">
+                    <input id = "firstName" type = "text" class = "form-control" placeholder = "Enter your first name"/>
+                    </div>
 
-                <label for = "lastName"> Last Name </label>
-                <input id = "lastName" type = "text" class = "form-control" placeholder = "Enter your last name"/>
-            
+                    <div class = "col">
+                    <input id = "lastName" type = "text" class = "form-control" placeholder = "Enter your last name"/>
+                </div>
+                
             </div>
 
                 <button type = "submit"  class = "btn btn-primary" > Place your order</button>
