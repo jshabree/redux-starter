@@ -42,6 +42,12 @@ class loginUser extends Component {
             // this.setState([e.target.value] = e.target.value);
         }
 
+        componentDidUpdate(newProps, prevState) {
+            if(newProps.result !== prevState.info) {
+                this.setState({info: newProps.result})
+            }
+        }
+
     
     render() {
         
