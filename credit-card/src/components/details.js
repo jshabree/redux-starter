@@ -59,7 +59,7 @@ class details extends Component {
             <form className = "details" onSubmit = "validateForm()">
 
             <div className = "form-inline">
-                <input id = "validationCustom01" type = "number" pattern="\d*" max = "16" class = "form-control" placeholder = "Enter your card number*" required/>
+                <input id = "validationCustom01" type = "tel" maxLength = "16" class = "form-control" placeholder = "Enter your card number*" required/>
             </div>
 
             <div className = "row">
