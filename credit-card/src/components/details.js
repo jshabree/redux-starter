@@ -1,11 +1,47 @@
 import React, { Component } from 'react'
 
 class details extends Component {
+    // constructor(props) {
+    //     super(props)
+    // }
 
-    validateMonthAndYear (input) {
+    validateForm () {
+        let firstName = document.getElementById("firstName");
+        let lastName = document.getElementById("lastName");
+        let date = new Date();
+        let month = date.getMonth();
+        let year = date.getFullYear();
+        let expiryMonth = document.getElementById("expiryMonth").value;
+        let expiryYear = document.getElementById("expiryYear").value;
+
+        //validating the First and Last name
+        if(firstName.value === "") {
+            alert("First name cannot be empty");
+            firstName.focus();
+            return false;
+        }
+
+        if(lastName.value === "") {
+            alert("Last name cannot be empty");
+            lastName.focus();
+            return false;
+        }
+
+        if(expiryMonth.selectedIndex === 0) {
+            alert("Please select a month");
+            return false;
+
+        }
+
+        if(expiryYear.selectedIndex === 0) {
+            alert("Please select a year");
+            return false;
+
+        }
+
+        // validating if the card is expired by checking the month and year
         var today, someday
-        var month = document.getElementById("month");
-        var year = document.getElementById("year");
+
         today = new Date();
         someday = new Date();
         someday.setFullYear(year, month -1, 1);
@@ -20,7 +56,7 @@ class details extends Component {
     render() {
         return (
             <div className = "center_div">
-            <form className = "details" onSubmit = "validateMonthAndYear()">
+            <form className = "details" onSubmit = "validateForm()">
 
             <div className = "form-inline">
                 <input id = "validationCustom01" type = "number" pattern="\d*" max = "16" class = "form-control" placeholder = "Enter your card number*" required/>
