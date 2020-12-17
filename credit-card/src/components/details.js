@@ -1,48 +1,42 @@
 import React, { Component } from 'react'
 
 class details extends Component {
-    
-    
-    
-    validate() {
-        window.addEventListener('load', function() {
-          var forms = document.getElementsByClassName('details');
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
-      }
+
+    validateMonthAndYear (input) {
+        var today, someday
+        var month = document.getElementById("month");
+        var year = document.getElementById("year");
+        today = new Date();
+        someday = new Date();
+        someday.setFullYear(year, month -1, 1);
+
+        if(someday < today) {
+            alert("Enter a valid credit card");
+            return false;
+        }
+
+    }
 
     render() {
         return (
             <div className = "center_div">
-            <form className = "details" noValidate>
+            <form className = "details">
 
             <div className = "form-inline">
-                <input id = "validationCustom01" type = "number" pattern="\d*" max = "10" class = "form-control" placeholder = "Enter your card number*"/>
-                <div class = "invalid-feedback">
-                    Please enter your card details
-                </div>
+                <input id = "validationCustom01" type = "number" pattern="\d*" max = "16" class = "form-control" placeholder = "Enter your card number*" required/>
             </div>
 
             <div className = "row">
                 <div class = "col">
-                    <input id = "month" type = "tel" maxLength = "2" class = "form-control" placeholder = "Month*" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                    required/>
+                    <input id = "month" type = "tel" maxLength = "2" class = "form-control" placeholder = "Month of expiry*" required validateMonthAndYear/>
                 </div>
 
                 <div class = "col">
-                    <input id = "year" type = "tel" maxLength = "2" class = "form-control" placeholder = "Year*"/>
+                    <input id = "year" type = "tel" maxLength = "2" class = "form-control" placeholder = "Year of expiry*" required validateMonthAndYear/>
                 </div>
 
                 <div class = "col">
-                    <input id = "cvv" type = "password" maxLength = "3" class = "form-control" placeholder = "Enter your CVV*"/>
+                    <input id = "cvv" type = "password" maxLength = "3" class = "form-control" placeholder = "Enter your CVV*" required/>
                 </div>
 
                 
@@ -51,17 +45,17 @@ class details extends Component {
             
             <div className = "row">
                 <div class = "col">
-                    <input id = "firstName" type = "text" class = "form-control" placeholder = "Enter your first name*"/>
+                    <input id = "firstName" type = "text" class = "form-control" placeholder = "Enter your first name*" required/>
                     </div>
 
                     <div class = "col">
-                    <input id = "lastName" type = "text" class = "form-control" placeholder = "Enter your last name*"/>
+                    <input id = "lastName" type = "text" class = "form-control" placeholder = "Enter your last name*" required/>
                 </div>
                 
             </div>
 
             <div class = "primary-button">
-                <button type = "submit"  class = "btn btn-primary" > Place your order </button>
+                <button type = "submit"  class = "btn btn-primary" > Submit </button>
             </div>
 
                
