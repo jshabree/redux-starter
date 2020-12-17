@@ -20,7 +20,7 @@ class details extends Component {
     render() {
         return (
             <div className = "center_div">
-            <form className = "details">
+            <form className = "details" onSubmit = "validateMonthAndYear()">
 
             <div className = "form-inline">
                 <input id = "validationCustom01" type = "number" pattern="\d*" max = "16" class = "form-control" placeholder = "Enter your card number*" required/>
@@ -28,11 +28,11 @@ class details extends Component {
 
             <div className = "row">
                 <div class = "col">
-                    <input id = "month" type = "tel" maxLength = "2" class = "form-control" placeholder = "Month of expiry*" required validateMonthAndYear/>
+                    <input id = "month" type = "tel" maxLength = "2" class = "form-control" placeholder = "Month of expiry*" required/>
                 </div>
 
                 <div class = "col">
-                    <input id = "year" type = "tel" maxLength = "2" class = "form-control" placeholder = "Year of expiry*" required validateMonthAndYear/>
+                    <input id = "year" type = "tel" maxLength = "2" class = "form-control" placeholder = "Year of expiry*" required/>
                 </div>
 
                 <div class = "col">
