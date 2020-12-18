@@ -4,7 +4,7 @@ class details extends Component {
     constructor(props) {
         super(props)
         this.state= {
-            cardNum: "",
+            cardNum: [[], [], [], []],
             month: "", year: "", cvv: "",
             firstName: "",
             lastName: "",
@@ -12,6 +12,17 @@ class details extends Component {
 
         }
     }
+
+    enableMasking = () => {
+        console.log("here")
+        const inputFields = [...document.querySelectorAll("input")];
+        inputFields.forEach((input, index) => {
+            input.addEventListener("keydown", e => {
+                this.maskInput(e, index);
+            });
+        });
+    };
+
         
     handleChange = (e)=>{
         this.setState({[e.target.name]: e.target.value});
@@ -53,9 +64,26 @@ class details extends Component {
             <div className = "center_div">
             <form className = "cardDetails" onSubmit = {this.validateForm} noValidate>
 
-            <div className = "form-inline">
-                <input name = "cardNum" type = "number" className = "form-control" placeholder = "Enter your card number" value = {this.state.cardNum} required onChange={this.handleChange}/>
+            
+            <div className = "row">
+            <div class = "col">
+                <input  type = "text" className = "form-control" maxLength = "4" placeholder = "----" required onChange={this.handleChange}/>
             </div>
+
+            <div class = "col">
+                <input  type = "text" className = "form-control" maxLength = "4" placeholder = "----" required onChange={this.handleChange}/>
+            </div>
+
+            <div class = "col">
+                <input  type = "text" className = "form-control" maxLength = "4" placeholder = "----" required onChange={this.handleChange}/>
+            </div>
+
+            <div class = "col">
+                <input  type = "text" className = "form-control" maxLength = "4" placeholder = "----" required onChange={this.handleChange}/>
+            </div>
+
+            </div>
+        
 
             <div className = "row">
                 <div class = "col">
@@ -91,7 +119,7 @@ class details extends Component {
 
                
             </form>
-            
+
             <Error message={this.state.error}/>
 
             </div>
