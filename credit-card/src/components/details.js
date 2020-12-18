@@ -4,7 +4,7 @@ class details extends Component {
     constructor(props) {
         super(props)
         this.state= {
-            cardNum: [[], [], [], []],
+            cardNum: "",
             month: "", year: "", cvv: "",
             firstName: "",
             lastName: "",
@@ -12,16 +12,6 @@ class details extends Component {
 
         }
     }
-
-    enableMasking = () => {
-        console.log("here")
-        const inputFields = [...document.querySelectorAll("input")];
-        inputFields.forEach((input, index) => {
-            input.addEventListener("keydown", e => {
-                this.maskInput(e, index);
-            });
-        });
-    };
 
         
     handleChange = (e)=>{
@@ -32,8 +22,15 @@ class details extends Component {
         e.preventDefault();
         const {cardNum, month, year, cvv} = this.state;
         let errorArray = []
+
+        
         if(cardNum.length < 16 || cardNum.length > 16) {
             errorArray.push("Invalid credit card number");
+        }
+        else if(cardNum.length === 16) {
+            let newCardNum = cardNum;
+            newCardNum = newCardNum.toString().replace(/\d(?=\d{4})/g, "*");
+            console.log(newCardNum);
         }
 
         if(cvv.length !== 3){
@@ -65,23 +62,8 @@ class details extends Component {
             <form className = "cardDetails" onSubmit = {this.validateForm} noValidate>
 
             
-            <div className = "row">
-            <div class = "col">
-                <input  type = "text" className = "form-control" maxLength = "4" placeholder = "----" required onChange={this.handleChange}/>
-            </div>
-
-            <div class = "col">
-                <input  type = "text" className = "form-control" maxLength = "4" placeholder = "----" required onChange={this.handleChange}/>
-            </div>
-
-            <div class = "col">
-                <input  type = "text" className = "form-control" maxLength = "4" placeholder = "----" required onChange={this.handleChange}/>
-            </div>
-
-            <div class = "col">
-                <input  type = "text" className = "form-control" maxLength = "4" placeholder = "----" required onChange={this.handleChange}/>
-            </div>
-
+            <div className = "form-inline">
+                <input name = "cardNum" type = "number" className = "form-control" placeholder = "Enter your card number" value = {this.state.cardNum} required onChange={this.handleChange}/>
             </div>
         
 
