@@ -13,21 +13,23 @@ class details extends Component {
     }
         
     handleChange = (e)=>{
-        this.setState({[e.target.name]: e.target.value})
+        this.setState({[e.target.name]: e.target.value});
     }
 
 
-    validateForm= (e)=> {
+    validateForm = (e)=> {
         e.preventDefault();
         const {cardNum, month, year, cvv, firstName, lastName} = this.state;
 
-        if(cardNum < 16 || cardNum > 16) {
+        if(cardNum.length < 16 || cardNum.length > 16) {
             alert("Invalid credit card number");
         }
 
-        if(cvv !== 3){
+        if(cvv.length !== 3){
             alert("Invalid CVV");
         }
+
+        // in case of browser default failures
 
         if(firstName === "") {
             alert("First name cannot be empty!");
@@ -37,32 +39,32 @@ class details extends Component {
             alert("Last name cannot be empty!");
         }
 
-        if(month.length > 12) {
+        if(month > 12) {
             alert("Invalid month");
         }
 
-        if(year.selectedIndex === 0) {
-            alert("Please select a year");
+        // validating if the card is expired by checking the month and year
+        let today, expiredDate;
+
+        today = new Date();
+        expiredDate = new Date();
+        expiredDate.setFullYear(year, month -1, 1);
+
+        if(expiredDate < today) {
+            alert("Your card has expired. Enter a valid credit card");
+            return false;
         }
 
-        // // validating if the card is expired by checking the month and year
-        // var today, someday
-
-        // today = new Date();
-        // someday = new Date();
-        // someday.setFullYear(year, month -1, 1);
-
-        // if(someday < today) {
-        //     alert("Enter a valid credit card");
-        //     return false;
-        // }
+        else {
+            alert("Card is valid, you are being redirected to the next page")
+        }
 
     }
 
     render() {
         return (
             <div className = "center_div">
-            <form className = "details" onSubmit = {this.validateForm}>
+            <form className = "cardDetails" onSubmit = {this.validateForm}>
 
             <div className = "form-inline">
                 <input name = "cardNum" type = "number" className = "form-control" placeholder = "Enter your card number*" required onChange={this.handleChange}/>
@@ -70,12 +72,11 @@ class details extends Component {
 
             <div className = "row">
                 <div class = "col">
-
-                    <input name = "month" type = "number" maxLength = "2" className = "form-control" placeholder = "Month of expiry*" required onChange={this.handleChange}/>
+                    <input name = "month" type = "number" className = "form-control" placeholder = "Month of expiry*" required onChange={this.handleChange}/>
                 </div>
 
                 <div class = "col">
-                    <input name = "year" type = "number" maxLength = "4" className = "form-control" placeholder = "Year of expiry*" required onChange={this.handleChange}/>
+                    <input name = "year" type = "number" className = "form-control" placeholder = "Year of expiry*" required onChange={this.handleChange}/>
                 </div>
 
                 <div class = "col">

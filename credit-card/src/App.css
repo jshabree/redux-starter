@@ -3,25 +3,27 @@
   width:60%;
 }
 
-.details {
+.cardDetails {
   text-align: center;
 
 }
 
-.details .form-inline{
+.cardDetails .form-inline{
   justify-content: flex-start;
 
 }
 
-.details .row {
+.cardDetails .row {
   justify-content: space-evenly;
   margin-top: 20px; 
 }
 
-.details .primary-button {
+.cardDetails .primary-button {
   margin-top: 20px;
 }
 
+
+/* pesky trick to get rid of unwanted drop-downs */
 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
   -webkit-appearance:none;margin:0
 }
