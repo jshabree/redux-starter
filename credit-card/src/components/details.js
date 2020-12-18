@@ -1,91 +1,98 @@
 import React, { Component } from 'react'
 
 class details extends Component {
-    // constructor(props) {
-    //     super(props)
-    // }
+    constructor(props) {
+        super(props)
+        this.state= {
+            cardNum: "",
+            month: "", year: "", cvv: "",
+            firstName: "",
+            lastName: "",
 
-    validateForm () {
-        let firstName = document.getElementById("firstName");
-        let lastName = document.getElementById("lastName");
-        let date = new Date();
-        let month = date.getMonth();
-        let year = date.getFullYear();
-        let expiryMonth = document.getElementById("expiryMonth").value;
-        let expiryYear = document.getElementById("expiryYear").value;
+        }
+    }
+        
+    handleChange = (e)=>{
+        this.setState({[e.target.name]: e.target.value})
+    }
 
-        //validating the First and Last name
-        if(firstName.value === "") {
-            alert("First name cannot be empty");
-            firstName.focus();
-            return false;
+
+    validateForm= (e)=> {
+        e.preventDefault();
+        const {cardNum, month, year, cvv, firstName, lastName} = this.state;
+
+        if(cardNum < 16 || cardNum > 16) {
+            alert("Invalid credit card number");
+        }
+
+        if(cvv !== 3){
+            alert("Invalid CVV");
+        }
+
+        if(firstName === "") {
+            alert("First name cannot be empty!");
         }
 
         if(lastName.value === "") {
-            alert("Last name cannot be empty");
-            lastName.focus();
-            return false;
+            alert("Last name cannot be empty!");
         }
 
-        if(expiryMonth.selectedIndex === 0) {
-            alert("Please select a month");
-            return false;
-
+        if(month.length > 12) {
+            alert("Invalid month");
         }
 
-        if(expiryYear.selectedIndex === 0) {
+        if(year.selectedIndex === 0) {
             alert("Please select a year");
-            return false;
-
         }
 
-        // validating if the card is expired by checking the month and year
-        var today, someday
+        // // validating if the card is expired by checking the month and year
+        // var today, someday
 
-        today = new Date();
-        someday = new Date();
-        someday.setFullYear(year, month -1, 1);
+        // today = new Date();
+        // someday = new Date();
+        // someday.setFullYear(year, month -1, 1);
 
-        if(someday < today) {
-            alert("Enter a valid credit card");
-            return false;
-        }
+        // if(someday < today) {
+        //     alert("Enter a valid credit card");
+        //     return false;
+        // }
 
     }
 
     render() {
         return (
             <div className = "center_div">
-            <form className = "details" onSubmit = "validateForm()">
+            <form className = "details" onSubmit = {this.validateForm}>
 
             <div className = "form-inline">
-                <input id = "validationCustom01" type = "tel" maxLength = "16" class = "form-control" placeholder = "Enter your card number*" required/>
+                <input name = "cardNum" type = "number" className = "form-control" placeholder = "Enter your card number*" required onChange={this.handleChange}/>
             </div>
 
             <div className = "row">
                 <div class = "col">
-                    <input id = "month" type = "tel" maxLength = "2" class = "form-control" placeholder = "Month of expiry*" required/>
+
+                    <input name = "month" type = "number" maxLength = "2" className = "form-control" placeholder = "Month of expiry*" required onChange={this.handleChange}/>
                 </div>
 
                 <div class = "col">
-                    <input id = "year" type = "tel" maxLength = "2" class = "form-control" placeholder = "Year of expiry*" required/>
+                    <input name = "year" type = "number" maxLength = "4" className = "form-control" placeholder = "Year of expiry*" required onChange={this.handleChange}/>
                 </div>
 
                 <div class = "col">
-                    <input id = "cvv" type = "password" maxLength = "3" class = "form-control" placeholder = "Enter your CVV*" required/>
+                    <input name = "cvv" type = "password" className = "form-control" placeholder = "Enter your CVV*" required onChange={this.handleChange}/>
                 </div>
-
+                
                 
             </div>
 
             
             <div className = "row">
                 <div class = "col">
-                    <input id = "firstName" type = "text" class = "form-control" placeholder = "Enter your first name*" required/>
+                    <input name="firstName" type = "text" className = "form-control" placeholder = "Enter your first name*" required onChange={this.handleChange}/>
                     </div>
 
                     <div class = "col">
-                    <input id = "lastName" type = "text" class = "form-control" placeholder = "Enter your last name*" required/>
+                    <input name = "lastName" type = "text" className = "form-control" placeholder = "Enter your last name*" required onChange={this.handleChange}/>
                 </div>
                 
             </div>
