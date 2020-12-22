@@ -4,7 +4,7 @@ class details extends Component {
     constructor(props) {
         super(props)
         this.state= {
-            cardNum: "",
+            cardNum: "", safeCardNum: "",
             month: "", year: "", cvv: "",
             firstName: "",
             lastName: "",
@@ -13,6 +13,45 @@ class details extends Component {
         }
     }
 
+    enableMasking = () => {
+        const cardNums = [...document.querySelectorAll("input")];
+        cardNums.forEach((input, index) => {
+          input.adddEventListener("keydown", e => {
+            this.maskInput(e, index);
+          });
+        });
+      };
+
+      maskInput = (e, cardNum) => {
+        const numkeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        const navkeys = [
+          "Backspace",
+          "Delete",
+          "Shift",
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "Tab"
+        ];
+
+        let selectionStart = e.target.selectionStart;
+
+        if (!numkeys.includes(e.key) && !navkeys.includes(e.key)) {
+          e.preventDefault();
+        } 
+        else if (e.key === "Backspace" || e.key === "Delete") {
+          selectionStart = selectionStart - 1 <= 0 ? 0 : selectionStart - 1;
+          this.state.cardDigits[cardNum].splice(selectionStart, 1);
+          e.target.value = this.state.cardDigits[cardNum]
+            .map(item => "#")
+            .join("");
+          e.target.selectionStart = selectionStart;
+        } 
+        else if (numkeys.includes(e.key)) {
+          this.setState.cardDigits[cardNum][selectionStart] = e.key;
+          }
+        }
         
     handleChange = (e)=>{
         this.setState({[e.target.name]: e.target.value});
@@ -28,9 +67,9 @@ class details extends Component {
             errorArray.push("Invalid credit card number");
         }
         else if(cardNum.length === 16) {
-            let newCardNum = cardNum;
-            newCardNum = newCardNum.toString().replace(/\d(?=\d{4})/g, "*");
-            console.log(newCardNum);
+            let safeCardNum = cardNum;
+            safeCardNum = safeCardNum.toString().replace(/\d(?=\d{4})/g, "*");
+            return safeCardNum;
         }
 
         if(cvv.length !== 3){
