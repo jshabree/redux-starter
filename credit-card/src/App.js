@@ -1,11 +1,11 @@
-import CustomHook from "./components/hooks/customHook";
+import TextInputWithFocusButton from "./components/hooks/useRef";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <CustomHook/>
+      <TextInputWithFocusButton/>
     </div>
   );
 }
