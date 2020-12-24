@@ -44,5 +44,5 @@ function FriendLisItem(props) {
         <li style = {{ color: isOnline ? 'green' : 'black '}}>
             {props.friend.name}
         </li>
-    )
+    );
 }
