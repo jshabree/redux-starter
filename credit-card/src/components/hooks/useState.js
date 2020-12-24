@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 
-export default function example() {
+export default function Example() {
 
-    const [count, setCount] = useState[0];
+    const [count, setCount] = useState(0);
 
     return (
         <div>
