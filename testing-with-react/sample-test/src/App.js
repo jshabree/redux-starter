@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import LoginUser from './components/loginUser';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './app.css'
+import '../src/App.css'
 class App extends Component {
   render() {
     return (

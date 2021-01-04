@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 
-import '../app.css'
+import '../App.css'
 
 class loginUser extends Component {
     constructor(props){
