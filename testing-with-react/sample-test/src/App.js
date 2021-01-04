@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
-import LoginUser from './components/loginUser';
+import Header from './components/header/index'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../src/App.css'
 class App extends Component {
   render() {
     return (
       <div className="App">
-        
-
-      <LoginUser />
-
+        <Header/>
         
       </div>
     )
