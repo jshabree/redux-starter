@@ -1,99 +1,59 @@
 import React, {useState} from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../src/App.scss'
 
-function Todo({ todo, index, completeTodo, deleteTodo}) {
-  return(
-    <div 
-    style = {{textDecoration: todo.isCompleted ? 'line-through' : ''}} 
-    className = "todo" >
-      { todo.text}
-
-
-      <div>
-        <button onClick = {() => completeTodo(index)} >
-          Complete 
-        </button>
-      
-        <button onClick = {() => deleteTodo(index)} >
-          Remove 
-        </button>
-      </div>
-
-    </div>
-  )
-
-}
-
-function TodoForm({addTodo}) {
-  const [value, setValue] = useState('');
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    if(!value) return;
-    addTodo(value);
-    setValue('');
-  }
-
-  return(
-    <form onSubmit = {handleSubmit} >
-      <input 
-      type = "text" 
-      className = "input" 
-      value = {value} 
-      placeholder = "Add new todo"
-      onChange= {e => setValue(e.target.value)} />
-    </form>
-  )
-
-}
-
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      text: 'Learn about React hooks',
-      isCompleted: false
-    },
-    {
-      text: 'Meet friend for lunch',
-      isCompleted: false
-    },
-    {
-      text: 'Build a Todo app',
-      isCompleted: false
+const [username, setUsername] = useState("")
+const [password, setPassword]= useState("");
+
+  const handleSubmit =(e) => {
+    e.preventDefault();
+
+    if(username === ''|| username.length < 8) {
+      alert('username needs to be at least 8 characters')
     }
-  ]);
 
-  const addTodo = text => {
-    const newTodos = [...todos, { text }];
-    setTodos(newTodos);
+    if(password === '') {
+      alert('password cannot be empty')
+  
+    }
+
+    if(password.length >10 || password.length <5) {
+      alert('password needs to be at least 10 characters')
+    }
   }
 
-  const completeTodo = index => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
-    setTodos(newTodos);
-  }
+  console.log(username, password);
 
-  const deleteTodo = index => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  }
 
   return (
     <div className = "app">
-      <div className = "todo-list">
-        {todos.map((todo, index) => (
-            <Todo key = {index} index = {index} todo = {todo} 
-            completeTodo = {completeTodo} 
-            deleteTodo = {deleteTodo}
-            />
-        ))}
 
-        <TodoForm addTodo = {addTodo} />
+    <div>
+      <input 
+      type = "text"
+      className = "loginFields"
+      onChange = {(e)=>setUsername(e.target.value)}
+      placeholder = "Enter your username"
+      value = {username} />
+    </div>
 
+    <div>
+    <input 
+      type = "password"
+      className = "loginFields"
+      onChange = {(e)=>setPassword(e.target.value)}
+      placeholder = "Enter your password"
+      value = {password} />
+    </div>
+      
+      <div>
+        <button onClick = {handleSubmit}>
+          Login 
+        </button>
       </div>
       
+
     </div>
   )
 }
