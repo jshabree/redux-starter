@@ -60,7 +60,7 @@ function App() {
     {
       text: 'Build a Todo app',
       isCompleted: false
-    },
+    }
   ]);
 
   const addTodo = text => {
